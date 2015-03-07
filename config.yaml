@@ -1,0 +1,11 @@
+www_server: helloflask.test www.helloflask.test
+working_dir: /opt/helloflask
+module: helloflask
+app: app
+
+
+
+
+
+
+
