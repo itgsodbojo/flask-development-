@@ -42,7 +42,7 @@ def setup():
 @task
 def deploy():
     """deploy your module to host """
-    with lcd(config['module']):
+    with lcd(config['module_path']):
         local('python setup.py sdist --formats=gztar')
         dist = local('python setup.py --fullname', capture=True) + ".tar.gz"
 
