@@ -1,5 +1,6 @@
 www_server: 192.168.33.10
 working_dir: /opt/helloflask
+module_path: ./helloflask
 module: helloflask
 app: app
 
