@@ -1,4 +1,4 @@
-www_server: helloflask.test www.helloflask.test
+www_server: 192.168.33.10
 working_dir: /opt/helloflask
 module: helloflask
 app: app

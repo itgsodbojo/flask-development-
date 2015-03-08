@@ -1,6 +1,6 @@
 import os
 
-from fabric.api import env, task, run, local, lcd, cd, sudo, put
+from fabric.api import env, task, run, local, lcd, cd, sudo, put, settings
 
 from fabtools import require
 from fabtools.require.files import temporary_directory
@@ -52,7 +52,8 @@ def deploy():
             sudo("{working_dir}/env/bin/pip install --upgrade --force-reinstall {dist}".format(
                     working_dir=config['working_dir'], dist=dist_path))
 
-    sudo("reload %s" % config['module'])
+    with settings(warn_only=True):
+        sudo("reload %s" % config['module'])
 
 @task
 def install_requirements():
@@ -78,6 +79,9 @@ def setup_module():
 
 @task
 def setup_nginx():
+
+    require.nginx.disable('default')
+
     with open("templates/nginx.conf") as f:
         require.nginx.site(config['module'], template_contents=f.read().format(**config))
 
